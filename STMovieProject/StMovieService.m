@@ -17,25 +17,27 @@ static NSString* const STRequestMovieDataURL = @"http://api.rottentomatoes.com/a
 #pragma mark- fetch web data
 + (void) requestMovieDataWithParamaters:(id)parameters start:(void(^)(void))start success:(void(^)(NSDictionary* result))success failure:(void(^)(NSError *error))failure{
     
-    start();
+//    start();
     
-    NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager* manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
-    NSString* pageLimit = [NSString stringWithFormat:@"%d",(int32_t)[parameters[@"pageLimit"] intValue]];
-    NSString* pageNum = [NSString stringWithFormat:@"%d", (int32_t)[parameters[@"pageNum"]intValue]];
-    NSString* urlStr = [NSString stringWithFormat: STRequestMovieDataURL,pageLimit,pageNum];
-    NSURL* url = [NSURL URLWithString:urlStr];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
-    NSURLSessionDataTask* dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        if(error){
-            failure(error);
-        }else{
-            NSArray* movieList = [StMovieService parseMovieListFromData: responseObject];
-            NSDictionary* result = @{@"movieList" : movieList};
-            success(result);
-        }
-    }];
-    [dataTask resume];
+//    NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager* manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
+//    NSString* pageLimit = [NSString stringWithFormat:@"%d",(int32_t)[parameters[@"pageLimit"] intValue]];
+//    NSString* pageNum = [NSString stringWithFormat:@"%d", (int32_t)[parameters[@"pageNum"]intValue]];
+//    NSString* urlStr = [NSString stringWithFormat: STRequestMovieDataURL,pageLimit,pageNum];
+//    NSURL* url = [NSURL URLWithString:urlStr];
+//    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+//    NSURLSessionDataTask* dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//        if(error){
+//            failure(error);
+//        }else{
+//            NSArray* movieList = [StMovieService parseMovieListFromData: responseObject];
+//            NSDictionary* result = @{@"movieList" : movieList};
+//            success(result);
+//        }
+//    }];
+//    [dataTask resume];
+//    [StMovieService getJsonDataWithJsonFilenName:@"movie"];
+    
 }
 
 #pragma mark- utility
@@ -44,7 +46,7 @@ static NSString* const STRequestMovieDataURL = @"http://api.rottentomatoes.com/a
         return nil;
     }
     NSMutableArray* movieList = [[NSMutableArray alloc]init];
-    NSArray* movieDataList = [data objectForKey:@"movieList"];
+    NSArray* movieDataList = [data objectForKey:@"movies"];
     for(int32_t i = 0; i< movieDataList.count; i++){
         STMovieModel* model = [[STMovieModel alloc]init];
         NSDictionary* movieData = movieDataList[i];
@@ -62,4 +64,38 @@ static NSString* const STRequestMovieDataURL = @"http://api.rottentomatoes.com/a
     }
     return [movieList copy];
 }
+
++ (void)getJsonDataWithJsonFilenName:(NSString *)jsonname start:(void(^)(void))start success:(void (^)(NSDictionary* result))success failure:(void(^)(NSError* error))failure
+{
+    start();
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:jsonname ofType:@"json"];
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:path];
+    NSError *error;
+    NSArray* jsonArr = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    if (!jsonData || error) {
+        //DLog(@"JSON解码失败");
+        failure(error);
+    } else {
+        NSMutableArray* movieList = [[NSMutableArray alloc]init];
+        for(int32_t i = 0; i< jsonArr.count; i++){
+            STMovieModel* model = [[STMovieModel alloc]init];
+            NSDictionary* movieData = jsonArr[i];
+            model.rowid = [[movieData objectForKey:@"id"]longLongValue];
+            model.name = [movieData objectForKey:@"title"];
+            model.year = [movieData objectForKey:@"year"];
+            model.synopsis = [movieData objectForKey:@"synopsis"];
+            NSDictionary* posersData = [movieData objectForKey:@"posters"];
+            if(posersData){
+                model.thumbnailImageUrlStr = [posersData objectForKey:@"thumbnail"];
+            }else{
+                model.thumbnailImageUrlStr = nil;
+            }
+            [movieList addObject:model];
+        }
+        NSDictionary* result = @{@"movieList" : movieList};
+        success(result);
+    }
+}
+
 @end

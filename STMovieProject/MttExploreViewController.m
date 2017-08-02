@@ -9,6 +9,9 @@
 #import "MttExploreViewController.h"
 #import "StMovieService.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "STCommonUtil.h"
+#import "SVProgressHUD.h"
+
 
 static NSString* const cellIdentifier = @"cellIdentifier";
 
@@ -52,21 +55,34 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     NSDictionary* params = @{@"pageLimit":@30,@"pageNum": @1};
     typeof(self) __weak weakSelf = self;
     UIActivityIndicatorView* indictor = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [StMovieService requestMovieDataWithParamaters:params start:^{
-        
-        typeof(weakSelf) __strong strongSelf = weakSelf;
-        indictor.center  = strongSelf.view.center;
-        [strongSelf.view addSubview:indictor];
-        
+//    [StMovieService requestMovieDataWithParamaters:params start:^{
+//        
+////        typeof(weakSelf) __strong strongSelf = weakSelf;
+////        indictor.center  = strongSelf.view.center;
+////        [strongSelf.view addSubview:indictor];
+//        [SVProgressHUD show];
+//        
+//    } success:^(NSDictionary *result) {
+//        
+//        typeof(weakSelf) __strong strongSelf = weakSelf;
+//        strongSelf.movieList = [result objectForKey:@"movieList"];
+//        [strongSelf.tableView reloadData];
+//        //[indictor removeFromSuperview];
+//        [SVProgressHUD dismiss];
+//
+//    } failure:^(NSError *error) {
+//        [SVProgressHUD dismiss];
+//    }];
+    [StMovieService getJsonDataWithJsonFilenName:@"movie" start:^{
+        [SVProgressHUD show];
     } success:^(NSDictionary *result) {
-        
         typeof(weakSelf) __strong strongSelf = weakSelf;
         strongSelf.movieList = [result objectForKey:@"movieList"];
         [strongSelf.tableView reloadData];
-        [indictor removeFromSuperview];
-
+        //[indictor removeFromSuperview];
+        [SVProgressHUD dismiss];
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -102,7 +118,7 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     STMovieModel* model = [self.movieList objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", model.name,model.year];
     cell.detailTextLabel.text = model.synopsis;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnailImageUrlStr] placeholderImage:nil completed:nil];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnailImageUrlStr] placeholderImage:[STCommonUtil imageWithColor:[UIColor grayColor] withSize:CGSizeMake(27, 40)] completed:nil];
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     

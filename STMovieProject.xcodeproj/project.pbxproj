@@ -23,6 +23,7 @@
 		BDBE0DC71F31BA2E000DD53A /* MttExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DC21F31BA2E000DD53A /* MttExploreViewController.m */; };
 		BDBE0DC81F31BA2E000DD53A /* StMovieService.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DC41F31BA2E000DD53A /* StMovieService.m */; };
 		BDBE0DC91F31BA2E000DD53A /* STMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */; };
+		BDBE0DD11F31D658000DD53A /* movie.json in Resources */ = {isa = PBXBuildFile; fileRef = BDBE0DD01F31C8AE000DD53A /* movie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		BDBE0DC41F31BA2E000DD53A /* StMovieService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StMovieService.m; sourceTree = "<group>"; };
 		BDBE0DC51F31BA2E000DD53A /* STMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMovieModel.h; sourceTree = "<group>"; };
 		BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMovieModel.m; sourceTree = "<group>"; };
+		BDBE0DD01F31C8AE000DD53A /* movie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +114,8 @@
 				BD565D471F2B24C800BAEA8A /* AppDelegate.m */,
 				BD77ACDB1F2B359C000EADAC /* STMainViewController.h */,
 				BD77ACDC1F2B359C000EADAC /* STMainViewController.m */,
-				BD77ACCF1F2B29ED000EADAC /* Pods */,
 				BD565D421F2B24C800BAEA8A /* STMovieProject */,
+				BD77ACCF1F2B29ED000EADAC /* Pods */,
 				BD565D5C1F2B24C800BAEA8A /* STMovieProjectTests */,
 				BD565D671F2B24C800BAEA8A /* STMovieProjectUITests */,
 				BD565D411F2B24C800BAEA8A /* Products */,
@@ -134,11 +136,6 @@
 		BD565D421F2B24C800BAEA8A /* STMovieProject */ = {
 			isa = PBXGroup;
 			children = (
-				BDBE0DCB1F31BB0A000DD53A /* service */,
-				BDBE0DC11F31BA2E000DD53A /* MttExploreViewController.h */,
-				BDBE0DC21F31BA2E000DD53A /* MttExploreViewController.m */,
-				BDBE0DC51F31BA2E000DD53A /* STMovieModel.h */,
-				BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */,
 				BD77ACCE1F2B29DC000EADAC /* Resources */,
 				BD77ACCA1F2B29B7000EADAC /* Utility */,
 				BD77ACCB1F2B29BF000EADAC /* Common */,
@@ -216,6 +213,7 @@
 		BD77ACCE1F2B29DC000EADAC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDBE0DD01F31C8AE000DD53A /* movie.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -233,8 +231,9 @@
 		BD77ACD31F2B3495000EADAC /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				BD77ACD51F2B34CA000EADAC /* STExploreViewController.h */,
-				BD77ACD61F2B34CA000EADAC /* STExploreViewController.m */,
+				BDBE0DCF1F31C3D0000DD53A /* controller */,
+				BDBE0DCE1F31C3B5000DD53A /* model */,
+				BDBE0DCB1F31BB0A000DD53A /* service */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -271,6 +270,26 @@
 				BDBE0DC41F31BA2E000DD53A /* StMovieService.m */,
 			);
 			name = webservice;
+			sourceTree = "<group>";
+		};
+		BDBE0DCE1F31C3B5000DD53A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BDBE0DC51F31BA2E000DD53A /* STMovieModel.h */,
+				BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		BDBE0DCF1F31C3D0000DD53A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BDBE0DC11F31BA2E000DD53A /* MttExploreViewController.h */,
+				BDBE0DC21F31BA2E000DD53A /* MttExploreViewController.m */,
+				BD77ACD51F2B34CA000EADAC /* STExploreViewController.h */,
+				BD77ACD61F2B34CA000EADAC /* STExploreViewController.m */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		C57C94CE104AAB91B7122C75 /* Frameworks */ = {
@@ -390,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDBE0DD11F31D658000DD53A /* movie.json in Resources */,
 				BD565D531F2B24C800BAEA8A /* LaunchScreen.storyboard in Resources */,
 				BD565D501F2B24C800BAEA8A /* Assets.xcassets in Resources */,
 				BD565D4E1F2B24C800BAEA8A /* Main.storyboard in Resources */,
