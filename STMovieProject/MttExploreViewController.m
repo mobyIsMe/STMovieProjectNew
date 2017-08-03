@@ -28,6 +28,7 @@ static NSString* const cellIdentifier = @"cellIdentifier";
 -(UITableView*)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

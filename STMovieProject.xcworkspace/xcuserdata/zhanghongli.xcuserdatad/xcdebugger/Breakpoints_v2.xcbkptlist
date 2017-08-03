@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STMovieProject/MttExploreViewController.m"
-            timestampString = "523358971.144017"
+            timestampString = "523425062.278994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-requestData"
             landmarkType = "7">
             <Locations>
@@ -26,11 +26,11 @@
                   moduleName = "STMovieProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhanghongli/Downloads/%E4%B9%A6/test%E5%B7%A5%E7%A8%8B%E3%80%81demo/STMovieProjectNew/STMovieProject/MttExploreViewController.m"
-                  timestampString = "523360395.406151"
+                  timestampString = "523435563.747422"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
                   offsetFromSymbolStart = "355">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "STMovieProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhanghongli/Downloads/%E4%B9%A6/test%E5%B7%A5%E7%A8%8B%E3%80%81demo/STMovieProjectNew/STMovieProject/MttExploreViewController.m"
-                  timestampString = "523360395.407599"
+                  timestampString = "523435563.748631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -74,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "STMovieProject/StMovieService.m"
-            timestampString = "523358987.940374"
+            timestampString = "523424386.351445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "+getJsonDataWithJsonFilenName:start:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STMovieProject/MttExploreViewController.m"
+            timestampString = "523425062.278994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-requestData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

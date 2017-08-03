@@ -72,7 +72,8 @@ static NSString* const STRequestMovieDataURL = @"http://api.rottentomatoes.com/a
     NSString *path = [[NSBundle mainBundle] pathForResource:jsonname ofType:@"json"];
     NSData *jsonData = [[NSData alloc] initWithContentsOfFile:path];
     NSError *error;
-    NSArray* jsonArr = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    NSArray* jsonArr = [data objectForKey:@"movies"];
     if (!jsonData || error) {
         //DLog(@"JSON解码失败");
         failure(error);
