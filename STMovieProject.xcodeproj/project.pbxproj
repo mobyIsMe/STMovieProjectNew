@@ -24,6 +24,8 @@
 		BDBE0DC81F31BA2E000DD53A /* StMovieService.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DC41F31BA2E000DD53A /* StMovieService.m */; };
 		BDBE0DC91F31BA2E000DD53A /* STMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */; };
 		BDBE0DD11F31D658000DD53A /* movie.json in Resources */ = {isa = PBXBuildFile; fileRef = BDBE0DD01F31C8AE000DD53A /* movie.json */; };
+		BDBE0DD51F3306D9000DD53A /* STDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DD41F3306D9000DD53A /* STDBManager.m */; };
+		BDBE0DD81F330976000DD53A /* STLocalService.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBE0DD71F330976000DD53A /* STLocalService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,10 @@
 		BDBE0DC51F31BA2E000DD53A /* STMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMovieModel.h; sourceTree = "<group>"; };
 		BDBE0DC61F31BA2E000DD53A /* STMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMovieModel.m; sourceTree = "<group>"; };
 		BDBE0DD01F31C8AE000DD53A /* movie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie.json; sourceTree = "<group>"; };
+		BDBE0DD31F3306D9000DD53A /* STDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDBManager.h; sourceTree = "<group>"; };
+		BDBE0DD41F3306D9000DD53A /* STDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDBManager.m; sourceTree = "<group>"; };
+		BDBE0DD61F330976000DD53A /* STLocalService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLocalService.h; sourceTree = "<group>"; };
+		BDBE0DD71F330976000DD53A /* STLocalService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLocalService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,8 @@
 			children = (
 				BD77ACD01F2B2AC2000EADAC /* STCommonUtil.h */,
 				BD77ACD11F2B2AC2000EADAC /* STCommonUtil.m */,
+				BDBE0DD31F3306D9000DD53A /* STDBManager.h */,
+				BDBE0DD41F3306D9000DD53A /* STDBManager.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -250,6 +258,8 @@
 		BDBE0DCA1F31BB03000DD53A /* localservice */ = {
 			isa = PBXGroup;
 			children = (
+				BDBE0DD61F330976000DD53A /* STLocalService.h */,
+				BDBE0DD71F330976000DD53A /* STLocalService.m */,
 			);
 			name = localservice;
 			sourceTree = "<group>";
@@ -485,7 +495,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDBE0DD51F3306D9000DD53A /* STDBManager.m in Sources */,
 				BDBE0DC81F31BA2E000DD53A /* StMovieService.m in Sources */,
+				BDBE0DD81F330976000DD53A /* STLocalService.m in Sources */,
 				BDBE0DC91F31BA2E000DD53A /* STMovieModel.m in Sources */,
 				BDBE0DC71F31BA2E000DD53A /* MttExploreViewController.m in Sources */,
 				BD77ACD21F2B2AC2000EADAC /* STCommonUtil.m in Sources */,
