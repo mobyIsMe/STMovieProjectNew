@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "STMovieModel.h"
+
 
 @interface STLocalService : NSObject
 
++(NSArray*)getAllMovies;
++(int64_t)addOrUpdateMovie:(STMovieModel*)movie;
++(bool)removeAllMovies;
 @end

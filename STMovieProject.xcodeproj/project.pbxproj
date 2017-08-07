@@ -73,7 +73,7 @@
 		BD77ACD91F2B34DA000EADAC /* STMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMeViewController.m; sourceTree = "<group>"; };
 		BD77ACDB1F2B359C000EADAC /* STMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMainViewController.h; sourceTree = "<group>"; };
 		BD77ACDC1F2B359C000EADAC /* STMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMainViewController.m; sourceTree = "<group>"; };
-		BD77ACE11F302709000EADAC /* podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
+		BD77ACE11F302709000EADAC /* podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BDBE0DC11F31BA2E000DD53A /* MttExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MttExploreViewController.h; sourceTree = "<group>"; };
 		BDBE0DC21F31BA2E000DD53A /* MttExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MttExploreViewController.m; sourceTree = "<group>"; };
 		BDBE0DC31F31BA2E000DD53A /* StMovieService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StMovieService.h; sourceTree = "<group>"; };
