@@ -11,8 +11,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "STCommonUtil.h"
 #import "SVProgressHUD.h"
-
-
+#import "STLocalService.h"
+#import "STDBManager.h"
 static NSString* const cellIdentifier = @"cellIdentifier";
 
 @interface MttExploreViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -38,6 +38,8 @@ static NSString* const cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //建立数据库
+    [[STDBManager sharedInstance] setupDB];
     [self setupUI];
     [self requestData];
 }
@@ -52,7 +54,16 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     [self.view addSubview:self.tableView];
 }
 
+
+//每次从网络请求数据成功后，将本次请求到的数据存储到本地数据库，并清理掉上一次存储的数据。在每次加载页面时，首先从本地数据库加载数据进行展示，再从网络请求数据对页面进行刷新
 -(void)requestData{
+    //load data from local database
+    self.movieList  = [STLocalService getAllMovies];
+    if(self.movieList.count>0){
+        [self.tableView reloadData];
+    }
+    
+    //load data from server and update loacal database
     NSDictionary* params = @{@"pageLimit":@30,@"pageNum": @1};
     typeof(self) __weak weakSelf = self;
     UIActivityIndicatorView* indictor = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -79,9 +90,16 @@ static NSString* const cellIdentifier = @"cellIdentifier";
     } success:^(NSDictionary *result) {
         typeof(weakSelf) __strong strongSelf = weakSelf;
         strongSelf.movieList = [result objectForKey:@"movieList"];
-        [strongSelf.tableView reloadData];
+        if(self.movieList.count == 0){
+            [strongSelf.tableView reloadData];
+        }
         //[indictor removeFromSuperview];
         [SVProgressHUD dismiss];
+        
+        for(STMovieModel* modle in self.movieList){
+            [STLocalService addOrUpdateMovie:modle];
+        }
+        
     } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];

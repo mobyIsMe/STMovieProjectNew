@@ -25,7 +25,7 @@ static NSString* const dbFIleName = @"stdb.sqlite";
         //NSArray* searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         //NSString* documentFolderPath = searchPaths[0];
        // _dbFilePath = [documentFolderPath stringByAppendingString:dbFIleName];
-        _dbFilePath = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"documents/%@",dbFIleName]];
+        _dbFilePath = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/documents/%@",dbFIleName]];
     }
     
     return _dbFilePath;
@@ -89,7 +89,7 @@ static NSString* const dbFIleName = @"stdb.sqlite";
 -(void)updateDB{
     FMDatabaseQueue* dbQueue = [FMDatabaseQueue databaseQueueWithPath:self.dbFilePath];
     [dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        [db executeUpdate:[NSString stringWithFormat:@"create table if not exists st_movie (rowid integer primary key not null, name text, year text, synopsis text, thumbnail_url text)"]];
+    bool result  = [db executeUpdate:[NSString stringWithFormat:@"create table if not exists st_movie (rowid integer primary key not null, name text, year text, synopsis text, thumbnail_url text)"]];
     }];
 
 }
